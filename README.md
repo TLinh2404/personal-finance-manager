@@ -13,7 +13,7 @@ This project is a full-stack web application developed to practice enterprise so
 
 ### Backend
 - Java 21
-- Spring Boot 3
+- Spring Boot 4.1.1
 - Spring Security
 - Spring Data JPA
 - JWT
