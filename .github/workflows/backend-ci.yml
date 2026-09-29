@@ -19,8 +19,8 @@ jobs:
         image: postgres:18
         env:
           POSTGRES_DB: personal_finance
-          POSTGRES_USER: postgres
-          POSTGRES_PASSWORD: postgres
+          POSTGRES_USER: ci_user
+          POSTGRES_PASSWORD: ci_password
         ports:
           - 5432:5432
         options: >-
@@ -30,8 +30,8 @@ jobs:
           --health-retries=5
 
     env:
-      DB_USERNAME: postgres
-      DB_PASSWORD: postgres
+      DB_USERNAME: ci_user
+      DB_PASSWORD: ci_password
 
     steps:
       - name: Checkout source code
