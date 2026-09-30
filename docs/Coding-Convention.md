@@ -12,7 +12,6 @@ The purpose is to keep the code consistent, readable, maintainable, and easier t
 
 The backend follows a layered package structure:
 
-```text
 com.personalfinance.manager
 ├── config
 ├── controller
