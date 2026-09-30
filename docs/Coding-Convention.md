@@ -11,7 +11,7 @@ The purpose is to keep the code consistent, readable, maintainable, and easier t
 ### 2.1 Package Structure
 
 The backend follows a layered package structure:
-
+```text
 com.personalfinance.manager
 ├── config
 ├── controller
@@ -20,7 +20,7 @@ com.personalfinance.manager
 ├── entity
 ├── dto
 └── exception
-
+```
 - `config`: Application and security configuration.
 
 - `controller`: Handles HTTP requests and responses.
