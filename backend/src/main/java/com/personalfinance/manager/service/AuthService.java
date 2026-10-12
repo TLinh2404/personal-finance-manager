@@ -5,6 +5,8 @@ import com.personalfinance.manager.entity.User;
 import com.personalfinance.manager.repository.UserRepository;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
+import com.personalfinance.manager.exception.EmailAlreadyExistsException;
+import com.personalfinance.manager.exception.PasswordMismatchException;
 
 @Service
 public class AuthService {
@@ -19,11 +21,11 @@ public class AuthService {
 
     public void register(RegisterRequest request) {
         if(userRepository.existsByEmail(request.getEmail())) {
-            throw new RuntimeException("Email is already registered");
+            throw new EmailAlreadyExistsException("Email is already registered");
         }
 
         if(!request.getPassword().equals(request.getConfirmPassword())) {
-            throw new RuntimeException("Password and confirm password do not match");
+            throw new PasswordMismatchException("Password and confirm password do not match");
         }
 
         String encodedPassword = passwordEncoder.encode(request.getPassword());
