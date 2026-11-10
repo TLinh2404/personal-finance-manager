@@ -5,10 +5,13 @@ on:
     branches:
       - develop
       - main
+      - feature/user-login
+
   pull_request:
     branches:
       - develop
       - main
+      - feature/user-login
 
 jobs:
   build:
