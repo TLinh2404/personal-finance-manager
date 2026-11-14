@@ -44,7 +44,7 @@ public class AuthService {
 
     // đăng nhập
     private User findUserByEmail(String email) {
-        return userRepository.findByEmail(email).orElseThrow(() -> new RuntimeException("Invalid email or password"));
+        return userRepository.findByEmail(email).orElseThrow(() -> new InvalidCredentialsException("Invalid email or password"));
 
     }
 
