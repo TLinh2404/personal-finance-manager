@@ -1,11 +1,11 @@
 package com.personalfinance.manager.dto;
 
-public class UserProfileRespone {
+public class UserProfileResponse {
     private Long id;
     private String fullName;
     private String email;
 
-    public UserProfileRespone(Long id, String fullName, String email) {
+    public UserProfileResponse(Long id, String fullName, String email) {
         this.id = id;
         this.fullName = fullName;
         this.email = email;

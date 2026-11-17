@@ -1,14 +1,13 @@
 package com.personalfinance.manager.controller;
 
 
-import com.personalfinance.manager.dto.UserProfileRespone;
+import com.personalfinance.manager.dto.UpdateUserProfileRequest;
+import com.personalfinance.manager.dto.UserProfileResponse;
 import com.personalfinance.manager.entity.User;
 import com.personalfinance.manager.service.UserService;
-import org.springframework.http.HttpStatus;
+import jakarta.validation.Valid;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.http.ResponseEntity;
 
 @RestController
@@ -23,8 +22,15 @@ public class UserController {
     }
 
     @GetMapping("/me")
-    public ResponseEntity<UserProfileRespone> getUserProfile(@AuthenticationPrincipal User user) {
-        UserProfileRespone response = userService.getUserProfile(user);
+    public ResponseEntity<UserProfileResponse> getUserProfile(@AuthenticationPrincipal User user) {
+        UserProfileResponse response = userService.getUserProfile(user);
+
+        return ResponseEntity.ok(response);
+    }
+
+    @PutMapping("/me")
+    public ResponseEntity<UserProfileResponse> updateUserProfile(@AuthenticationPrincipal User user, @Valid @RequestBody UpdateUserProfileRequest request) {
+        UserProfileResponse response = userService.updateUserProfile(user, request);
 
         return ResponseEntity.ok(response);
     }
