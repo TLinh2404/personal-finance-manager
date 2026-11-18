@@ -1,6 +1,7 @@
 package com.personalfinance.manager.controller;
 
 
+import com.personalfinance.manager.dto.ChangePasswordRequest;
 import com.personalfinance.manager.dto.UpdateUserProfileRequest;
 import com.personalfinance.manager.dto.UserProfileResponse;
 import com.personalfinance.manager.entity.User;
@@ -22,16 +23,24 @@ public class UserController {
     }
 
     @GetMapping("/me")
-    public ResponseEntity<UserProfileResponse> getUserProfile(@AuthenticationPrincipal User user) {
+    public ResponseEntity<UserProfileResponse> getUserProfile(@AuthenticationPrincipal User user) { // @AuthenticationPrincipal User user	Lấy người dùng đang đăng nhập
         UserProfileResponse response = userService.getUserProfile(user);
 
         return ResponseEntity.ok(response);
     }
 
     @PutMapping("/me")
-    public ResponseEntity<UserProfileResponse> updateUserProfile(@AuthenticationPrincipal User user, @Valid @RequestBody UpdateUserProfileRequest request) {
+    public ResponseEntity<UserProfileResponse> updateUserProfile(@AuthenticationPrincipal User user, @Valid @RequestBody UpdateUserProfileRequest request) { // @Valid	Kích hoạt validation trong DTO
         UserProfileResponse response = userService.updateUserProfile(user, request);
 
         return ResponseEntity.ok(response);
+    }
+
+
+    @PutMapping("/me/password")
+    public ResponseEntity<Void> changePassword(@AuthenticationPrincipal User user, @Valid @RequestBody ChangePasswordRequest request) {
+        userService.changePassword(user, request);
+
+        return ResponseEntity.noContent().build();
     }
 }
